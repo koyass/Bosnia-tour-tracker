@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#18392f"/>
+<title>Bosnia 2026</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#f4f1e9;--card:#fffdf8;--ink:#18302a;--muted:#6f776f;--green:#18392f;--gold:#b78b45;--line:#e5dfd3;--rose:#9a4f57}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:linear-gradient(135deg,#15352c,#31594b);color:white;padding:calc(18px + env(safe-area-inset-top)) 20px 26px;border-radius:0 0 28px 28px}
+header small{opacity:.78;letter-spacing:.12em;text-transform:uppercase} h1{margin:6px 0 4px;font-size:32px} header p{margin:0;opacity:.9}
+nav{display:flex;gap:8px;overflow:auto;padding:14px 14px 6px;scrollbar-width:none;position:sticky;top:0;background:rgba(244,241,233,.94);backdrop-filter:blur(12px);z-index:5}
+nav button,.chip{border:0;border-radius:999px;padding:10px 14px;background:white;color:var(--ink);box-shadow:0 1px 5px #0001;white-space:nowrap}
+nav button.active{background:var(--green);color:white}
+main{padding:10px 14px 90px;max-width:760px;margin:auto}.section{display:none}.section.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin:10px 0;box-shadow:0 6px 22px #0000000a}
+.hero{padding:18px;background:linear-gradient(135deg,#fff,#efe8d8)} h2,h3{margin:0 0 8px}.muted{color:var(--muted);font-size:14px}.route{font-weight:700}
+.day{cursor:pointer}.day .top{display:flex;justify-content:space-between;gap:10px}.badge{font-size:12px;background:#e6efe9;padding:5px 8px;border-radius:999px;height:max-content}
+.timeline{border-left:2px solid #d8d2c6;margin-left:6px;padding-left:16px}.stop{margin:14px 0}.stop b{display:block}
+details{margin-top:10px} summary{font-weight:700;cursor:pointer}.weather{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.weather div{padding:12px;border-radius:14px;background:#f2f5f2}
+.check{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #eee8dc}.check:last-child{border:0}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--green)}
+input[type=number],input[type=text],textarea{width:100%;border:1px solid #d9d3c8;border-radius:12px;padding:11px;background:white;font:inherit}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.outfit-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;margin:10px 0;border:1px solid var(--line);background:#eee8dc}.photo-empty{aspect-ratio:4/5;border:2px dashed #d8d2c6;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--muted);margin:10px 0;background:#faf7f0}.photo-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}.photo-btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:12px;padding:11px 14px;background:var(--green);color:#fff;font-weight:700;cursor:pointer}.photo-btn.secondary{background:#eee8dc;color:var(--ink)}.photo-input{display:none}.money{font-size:28px;font-weight:800}
+.heart{color:var(--rose)} .gold{color:var(--gold)} .small{font-size:13px}
+footer{position:fixed;bottom:0;left:0;right:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fffdf8eF;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted)}
+@media(max-width:420px){.weather,.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><small>Family Travel Companion</small><h1>Bosnia 2026 🇧🇦</h1><p>13–20 November • Sarajevo → Mostar • Sherin, Najma & Ayn</p></header>
+<nav id="nav"></nav>
+<main>
+<section id="home" class="section active"></section>
+<section id="itinerary" class="section"></section>
+<section id="outfits" class="section"></section>
+<section id="packing" class="section"></section>
+<section id="food" class="section"></section>
+<section id="budget" class="section"></section>
+<section id="bookings" class="section"></section>
+</main>
+<footer>Offline-friendly • Your ticks, spending & notes stay on this device</footer>
+<script>
+const days=[
+{d:"13 Nov",n:"Day 1",base:"Sarajevo",title:"Arrival & Baščaršija",route:"SJJ → Hotel Old Sarajevo → Baščaršija",spend:"SAR 200–285",must:["Baščaršija","Sebilj","Kazandžiluk","First Bosnian meal","Bosnian coffee"],times:[["12:05","Land at Sarajevo"],["13:15","Airport pickup"],["13:40–14:00","Hotel check-in"],["14:15","First Bosnian meal"],["15:00","Baščaršija daylight walk"],["16:20","Blue-hour photography"],["18:00","Hotel rest"],["19:30","Traditional dinner"]],sun:"Old Town daylight before early sunset.",rain:"Late lunch → short covered Old Town walk → coffee → rest → dinner."},
+{d:"14 Nov",n:"Day 2",base:"Sarajevo",title:"Vrelo Bosne & Trebević",route:"Vrelo Bosne → Trebević → Sarajevo",spend:"SAR 180–250",must:["Vrelo Bosne","Trebević viewpoints","Olympic bobsled track"],times:[["09:00","Driver pickup"],["09:30","Vrelo Bosne"],["11:30","Early lunch"],["13:00","Trebević"],["15:30","Mountain coffee"],["16:30–17:00","Hotel"]],sun:"Cable car down if visibility is good; driver meets below if feasible.",rain:"Keep Vrelo Bosne in light rain. Shorten/skip Trebević in heavy rain, strong wind or dense fog."},
+{d:"15 Nov",n:"Day 3",base:"Sarajevo",title:"Travnik, Jajce & Pliva",route:"Travnik → Jajce → Pliva Lakes → Mlinčići",spend:"SAR 250–350",must:["Jajce waterfall","Pliva Lakes","Mlinčići","Travnik / Plava Voda"],times:[["08:00","Driver pickup"],["09:30","Travnik / Plava Voda"],["10:45","Drive to Jajce"],["12:00","Pliva Waterfall"],["12:45","Lunch"],["13:45","Pliva Lakes"],["14:30","Mlinčići"],["15:30","Golden-hour buffer"],["19:00–19:30","Sarajevo"]],sun:"Use the flexible buffer for the best lake/watermill light.",rain:"Shorten Travnik; prioritize waterfall + Mlinčići; driver safety wins in ice/snow."},
+{d:"16 Nov",n:"Day 4",base:"Sarajevo",title:"Slow Sarajevo",route:"Old Town → Food → Coffee → Rest → Viewpoint",spend:"SAR 220–310",must:["Old Sarajevo walk","Burek/pita lunch","Bosnian coffee","Tufahija","Hotel rest"],times:[["08:30","Slow breakfast"],["10:00","Old Sarajevo walk"],["12:00","Burek / sirnica / zeljanica"],["13:00","Bosnian coffee"],["14:00","Hotel rest / Ayn nap"],["15:30","Yellow Fortress if clear"],["17:00","Tufahija"],["19:00","Bosnian dinner"]],sun:"Yellow Fortress before sunset if clear.",rain:"Covered Old Town, café, dessert, souvenirs; skip exposed viewpoint."},
+{d:"17 Nov",n:"Day 5 ❤️",base:"Mostar",title:"Anniversary Scenic Transfer",route:"Sarajevo → Konjic → Jablaničko Lake → Neretva → Mostar",spend:"SAR 260–420",must:["Konjic & Neretva","Jablaničko scenic stop","Neretva viewpoints","Stari Most blue hour","Anniversary dinner","One shared cake slice 🍰"],times:[["08:00","Breakfast / pack"],["09:30","Driver pickup"],["10:45","Konjic"],["12:15","Jablaničko Lake"],["13:00","Jablanica lunch"],["14:00","Neretva scenic drive"],["15:30","Hotel Almira / rest & change"],["16:15","Stari Most"],["18:00","Anniversary dinner"],["19:30","Night walk + shared cake slice"]],sun:"Slow scenic stops; reach Mostar with daylight remaining.",rain:"Shorten viewpoints, keep Konjic, warm up at hotel, umbrella walk to Stari Most and dinner."},
+{d:"18 Nov",n:"Day 6",base:"Mostar",title:"Blagaj & Kravica",route:"Blagaj → Počitelj → Kravica → Bunski Kanal if time",spend:"SAR 220–300",must:["Blagaj / Buna Spring","Kravica Waterfalls","Počitelj (short)"],times:[["09:00","Driver pickup"],["09:30","Blagaj"],["11:15","Buna-side coffee"],["12:15","Počitelj"],["13:15","Lunch"],["14:15","Kravica"],["16:00","Decision: stay or Bunski Kanal"],["17:15–17:45","Hotel Almira"]],sun:"Bunski Kanal only if daylight, energy and timing are good.",rain:"Keep Blagaj/Kravica; shorten Počitelj; skip Bunski Kanal."},
+{d:"19 Nov",n:"Day 7",base:"Mostar",title:"Slow Mostar",route:"Stari Most → Bazaar → Café de Alma → Rest → Golden Hour",spend:"SAR 190–300",must:["Stari Most daylight","Café de Alma","Food Passport gaps","Final golden-hour photos","Pack"],times:[["08:00","Breakfast"],["09:00","Stari Most photography"],["10:30","Old Bazaar / souvenirs"],["11:30","Café de Alma"],["12:30","Mostar lunch"],["14:00","Hotel rest / Ayn nap"],["15:00","Final photography"],["17:30","Pack"],["19:00","Last Bosnia dinner"]],sun:"Stay flexible and photograph the best light around Stari Most.",rain:"Short walks + Café de Alma + lunch + shopping + hotel rest; photograph bridge whenever rain eases."},
+{d:"20 Nov",n:"Day 8",base:"Departure",title:"Mostar → Sarajevo Airport",route:"Hotel Almira → SJJ → Istanbul → Riyadh",spend:"Buffer only",must:["Breakfast","Final room check","Airport transfer","PC294"],times:[["07:00","Wake / get ready"],["07:30","Breakfast"],["08:15","Final room check"],["08:30–09:00","Driver pickup"],["~11:30","Target SJJ arrival"],["16:10","PC294 SJJ → SAW"],["22:00","PC690 SAW → RUH"]],sun:"No sightseeing. Keep the large airport buffer.",rain:"Same plan; early departure protects the buffer."}
+];
+const tabs=[["home","Home"],["itinerary","Itinerary"],["outfits","Outfits"],["packing","Packing"],["food","Food"],["budget","Budget"],["bookings","Bookings"]];
+const nav=document.getElementById("nav");
+tabs.forEach(([id,label],i)=>{let b=document.createElement("button");b.textContent=label;b.className=i?"":"active";b.onclick=()=>show(id,b);nav.appendChild(b)});
+function show(id,b){document.querySelectorAll(".section").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");scrollTo(0,0)}
+function save(k,v){localStorage.setItem("b26_"+k,JSON.stringify(v))}
+function load(k,d){try{return JSON.parse(localStorage.getItem("b26_"+k))??d}catch{return d}}
+document.getElementById("home").innerHTML=`<div class="card hero"><h2>Our Bosnia 🇧🇦</h2><p class="route">8 days • 2 bases • nature, food & family</p><p class="muted">A calm itinerary built around mountains, rivers, waterfalls, photography, authentic food and enough rest for Ayn.</p></div>
+<div class="card"><h3 class="heart">❤️ 17 November</h3><p>Anniversary scenic transfer to Mostar, Stari Most at blue hour, dinner and your tradition: <b>one slice of cake shared together 🍰</b>.</p></div>
+<div class="card"><h3>Trip rule</h3><p>We do not add attractions just to tick boxes. Protect the scenery, family time, food, photography and rest.</p></div>
+<div class="card"><h3>Quick facts</h3><p>🏨 Sarajevo: Hotel Old Sarajevo • 13–17 Nov<br>🏨 Mostar: Hotel Almira • 17–20 Nov<br>🚗 Heart of Bosnia: private driver/guide • €700<br>✈️ Return: PC294 SJJ 16:10 on 20 Nov</p></div>`;
+function renderDays(){
+document.getElementById("itinerary").innerHTML=days.map((x,i)=>`<div class="card day"><div class="top"><div><div class="muted">${x.d} • ${x.base}</div><h3>${x.n} — ${x.title}</h3></div><span class="badge">${x.spend}</span></div><p class="route">${x.route}</p>
+<details ${i==4?"open":""}><summary>Open day plan</summary><div class="timeline">${x.times.map(t=>`<div class="stop"><b>${t[0]}</b>${t[1]}</div>`).join("")}</div>
+<p><b>Must do:</b> ${x.must.join(" • ")}</p><div class="weather"><div><b>☀️ Plan A</b><br><span class="small">${x.sun}</span></div><div><b>🌧️ Plan B</b><br><span class="small">${x.rain}</span></div></div></details></div>`).join("")}
+renderDays();
+
+const outfitDirections=[
+["Day 1","Sarajevo old-town city look","Chic layered look • scarf/turban • comfortable walking shoe"],
+["Day 2","Forest + mountain","Warm sporty layers • cap/scarf • grippy shoe"],
+["Day 3","Waterfall + lakes + watermills","Earthy/natural palette • brown/plaid direction"],
+["Day 4","European street style","Stylish city knit/layering • scarf/turban"],
+["Day 5 ❤️","Neretva + Mostar anniversary","Prettiest scenic day look + optional anniversary evening change"],
+["Day 6","Blue-green water + cliffs","Light/neutral contrast look • waterproof layer"],
+["Day 7","Mostar stone + cafés","Relaxed photogenic old-town look"],
+["Day 8","Airport","Warm, easy travel outfit"]
+];
+document.getElementById("outfits").innerHTML=`<div class="card hero"><h2>Outfit Photo Planner 👗📸</h2><p>Upload the actual outfit photo for each day. The image stays saved on this device and can be replaced anytime.</p></div>`+outfitDirections.map((o,i)=>`<div class="card outfit-card"><div class="muted">${o[0]}</div><h3>${o[1]}</h3><p>${o[2]}</p><div id="outfitPreview${i}" class="photo-empty">No outfit photo yet<br>Tap “Upload Outfit Photo”</div><div class="photo-actions"><label class="photo-btn" for="outfitFile${i}">📷 Upload Outfit Photo</label><input class="photo-input" id="outfitFile${i}" type="file" accept="image/*" data-outfit-file="${i}"><button class="photo-btn secondary" type="button" data-outfit-remove="${i}">Remove</button></div><label class="muted">Optional styling note</label><input type="text" data-note="${i}" placeholder="e.g. beige scarf + Onitsuka + brown bag"></div>`).join("");
+document.querySelectorAll("[data-note]").forEach(el=>{let k="outfit"+el.dataset.note;el.value=load(k,"");el.oninput=()=>save(k,el.value)});
+const outfitDB=new Promise((resolve,reject)=>{const req=indexedDB.open("Bosnia2026",1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains("outfitPhotos"))db.createObjectStore("outfitPhotos")};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
+async function outfitPut(k,b){const db=await outfitDB;return new Promise((r,j)=>{const tx=db.transaction("outfitPhotos","readwrite");tx.objectStore("outfitPhotos").put(b,k);tx.oncomplete=r;tx.onerror=()=>j(tx.error)})}
+async function outfitGet(k){const db=await outfitDB;return new Promise((r,j)=>{const q=db.transaction("outfitPhotos").objectStore("outfitPhotos").get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>j(q.error)})}
+async function outfitDelete(k){const db=await outfitDB;return new Promise((r,j)=>{const tx=db.transaction("outfitPhotos","readwrite");tx.objectStore("outfitPhotos").delete(k);tx.oncomplete=r;tx.onerror=()=>j(tx.error)})}
+function showOutfitPhoto(i,b){const box=document.getElementById("outfitPreview"+i);if(!b){box.className="photo-empty";box.innerHTML='No outfit photo yet<br>Tap “Upload Outfit Photo”';return}const u=URL.createObjectURL(b);box.className="";box.innerHTML=`<img class="outfit-photo" alt="Outfit for ${outfitDirections[i][0]}">`;box.querySelector("img").src=u}
+async function restoreOutfits(){for(let i=0;i<outfitDirections.length;i++){try{showOutfitPhoto(i,await outfitGet("day"+i))}catch(e){}}}
+document.querySelectorAll("[data-outfit-file]").forEach(el=>el.onchange=async()=>{const f=el.files&&el.files[0];if(!f||!f.type.startsWith("image/"))return;await outfitPut("day"+el.dataset.outfitFile,f);showOutfitPhoto(+el.dataset.outfitFile,f)});
+document.querySelectorAll("[data-outfit-remove]").forEach(el=>el.onclick=async()=>{const i=+el.dataset.outfitRemove;await outfitDelete("day"+i);showOutfitPhoto(i,null);const inp=document.getElementById("outfitFile"+i);if(inp)inp.value=""});restoreOutfits();
+
+const pack=["Passports + U.S. visas","Flight confirmations","Hotel confirmations","Travel insurance","Wallet / cards / BAM & EUR","Sony A7 IV + lens","Memory cards","Camera batteries + charger","iPhones + chargers","Power banks","Umbrella ☔","Waterproof jackets","Thermals","Fleece / sweaters","Warm socks","Beanies / gloves / scarves","Waterproof/grippy shoes","Ayn warm hooded jacket","Ayn thermals","Ayn spare socks","Ayn spare trousers in day bag","Medicines","Toiletries","20 kg checked-bag weight check"];
+let pstate=load("pack",{});
+document.getElementById("packing").innerHTML=`<div class="card hero"><h2>Packing Checklist 🧳</h2><p>Ticks are saved on this device.</p></div><div class="card">${pack.map((x,i)=>`<label class="check"><input type="checkbox" data-pack="${i}" ${pstate[i]?"checked":""}><span>${x}</span></label>`).join("")}</div>`;
+document.querySelectorAll("[data-pack]").forEach(el=>el.onchange=()=>{pstate[el.dataset.pack]=el.checked;save("pack",pstate)});
+
+const foods=["Ćevapi","Burek","Sirnica","Zeljanica","Begova čorba","Bosanski lonac","Sogan-dolma","Klepe","Jablanica roast lamb","Fresh trout","Kajmak","Tufahija","Baklava","Proper Bosnian coffee","Café de Alma coffee ritual"];
+let fstate=load("food",{});
+document.getElementById("food").innerHTML=`<div class="card hero"><h2>Bosnia Food Passport 🍴</h2><p>Try it once, tick it forever.</p></div><div class="card">${foods.map((x,i)=>`<label class="check"><input type="checkbox" data-food="${i}" ${fstate[i]?"checked":""}><span>${x}</span></label>`).join("")}</div>`;
+document.querySelectorAll("[data-food]").forEach(el=>el.onchange=()=>{fstate[el.dataset.food]=el.checked;save("food",fstate)});
+
+document.getElementById("budget").innerHTML=`<div class="card hero"><h2>Budget 💰</h2><div class="money">SAR 11,500</div><p>Working all-in ceiling</p></div>
+<div class="grid2"><div class="card"><b>Flights</b><p>SAR 3,934</p></div><div class="card"><b>Sarajevo hotel</b><p>SAR 1,507</p></div><div class="card"><b>Mostar hotel</b><p>SAR 1,219</p></div><div class="card"><b>Driver</b><p>~SAR 3,050 (€700)</p></div></div>
+<div class="card"><h3>Live trip spending</h3><label>Food / coffee (SAR)</label><input id="foodSpend" type="number" min="0"><br><br><label>Tickets (SAR)</label><input id="ticketSpend" type="number" min="0"><br><br><label>Souvenirs / misc. (SAR)</label><input id="miscSpend" type="number" min="0"><p id="remain" class="money"></p></div>`;
+["foodSpend","ticketSpend","miscSpend"].forEach(k=>{let e=document.getElementById(k);e.value=load(k,0);e.oninput=()=>{save(k,+e.value);calc()}});
+function calc(){let committed=3934+1507+1219+3050;let extra=["foodSpend","ticketSpend","miscSpend"].reduce((s,k)=>s+(+document.getElementById(k).value||0),0);document.getElementById("remain").textContent="Remaining: SAR "+Math.max(0,11500-committed-extra).toLocaleString()}
+calc();
+
+document.getElementById("bookings").innerHTML=`<div class="card hero"><h2>Bookings & Documents 🎫</h2><p>Keep the essential details available offline.</p></div>
+<div class="card"><h3>✈️ Outbound • 13 Nov</h3><p><b>PC691</b> RUH 02:40 → SAW 06:40<br><b>PC291</b> SAW 12:10 → SJJ 12:05</p></div>
+<div class="card"><h3>✈️ Return • 20 Nov</h3><p><b>PC294</b> SJJ 16:10 → SAW 20:00<br><b>PC690</b> SAW 22:00 → RUH 01:35 (21 Nov)</p></div>
+<div class="card"><h3>🏨 Hotel Old Sarajevo</h3><p>13–17 Nov • Breakfast included<br>Bravadžiluk 38, Baščaršija<br>Approx. SAR 1,507</p></div>
+<div class="card"><h3>🏨 Hotel Almira</h3><p>17–20 Nov • Triple Room with Terrace • Breakfast included<br>Approx. SAR 1,219</p></div>
+<div class="card"><h3>🚗 Heart of Bosnia</h3><p>Private vehicle + driver/guide • €700<br>Includes agreed tours/transfers, fuel, tolls, parking, child seat and both airport transfers. Entrance fees and meals separate.</p></div>
+<div class="card"><h3>🛂 Travel documents</h3><p>Carry passports, valid U.S. multiple-entry visas, return flights, hotel bookings, insurance and accommodation/funds proof. Recheck Bosnia entry rules shortly before travel.</p></div>`;
+if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{})}
+</script>
+</body></html>
